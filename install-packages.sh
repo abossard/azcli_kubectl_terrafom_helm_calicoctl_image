@@ -17,7 +17,7 @@ apt-get update
 apt-get -y upgrade
 
 # Install a new package, without unnecessary recommended packages:
-apt-get -y install --no-install-recommends vim curl wget iputils-ping dnsutils git ca-certificates apt-transport-https lsb-release gnupg gpg netcat openssl
+apt-get -y install --no-install-recommends vim curl wget iputils-ping dnsutils git jq yq ca-certificates apt-transport-https lsb-release gnupg gpg netcat openssl
 
 mkdir -p /etc/apt/keyrings
 curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
