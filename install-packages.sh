@@ -17,7 +17,7 @@ apt-get update
 apt-get -y upgrade
 
 # Install a new package, without unnecessary recommended packages:
-apt-get -y install --no-install-recommends vim curl wget iputils-ping dnsutils git jq yq ca-certificates apt-transport-https lsb-release gnupg gpg netcat openssl
+apt-get -y install --no-install-recommends vim curl wget iputils-ping dnsutils git jq ca-certificates apt-transport-https lsb-release gnupg gpg netcat openssl
 
 mkdir -p /etc/apt/keyrings
 curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
@@ -36,7 +36,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashi
 
 apt-get update
 apt-get install -y azure-cli terraform packer consul vault
-
+az aks install-cli
 # Delete cached files we don't need anymore (note that if you're
 # using official Docker images for Debian or Ubuntu, this happens
 # automatically, you don't need to do it yourself):
