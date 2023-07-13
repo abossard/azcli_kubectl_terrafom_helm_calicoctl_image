@@ -17,7 +17,7 @@ apt-get update
 apt-get -y upgrade
 
 # Install a new package, without unnecessary recommended packages:
-apt-get -y install --no-install-recommends vim curl wget iputils-ping dnsutils git jq ca-certificates apt-transport-https lsb-release gnupg gpg netcat openssl
+apt-get -y install --no-install-recommends vim curl wget iputils-ping dnsutils git jq ca-certificates apt-transport-https lsb-release gnupg gpg netcat openssl procps 
 
 mkdir -p /etc/apt/keyrings
 curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
@@ -34,8 +34,11 @@ wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/ke
 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
 
+curl -fsSL https://packages.redis.io/gpg | gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/redis.list
+
 apt-get update
-apt-get install -y azure-cli terraform packer consul vault postgresql-client
+apt-get install -y azure-cli terraform packer consul vault redis postgresql-client
 az aks install-cli
 # Delete cached files we don't need anymore (note that if you're
 # using official Docker images for Debian or Ubuntu, this happens
